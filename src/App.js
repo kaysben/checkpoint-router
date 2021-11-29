@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import { Route } from 'react-router';
+
 import './App.css';
 
 import Addmovie from './components/addmovie';
@@ -16,7 +17,7 @@ const App = () => {
         rating: 4,
         description:
           "A gangster family epic set in 1900s England, centering on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby.",
-        trailer: "https://www.youtube.com/embed/oVzVdvGIC7U",
+        trailer: "https://www.youtube.com/embed/oVzVdvGIC7U" ,
       },
       {
         id: 1,
@@ -185,10 +186,10 @@ const App = () => {
             <Searchbox  movies={movies} setSearchtTerm={setSearchtTerm} setRating={setRating}  setSearchRatig={setSearchRatig}  />
             </p>
 			<div className='row'>
-            <MovieList movies={movies} rating={rating} searchRating={searchRating}   searchtTerm={searchtTerm} />
-           
+           <Route path='/' exact  > <MovieList movies={movies} rating={rating} searchRating={searchRating}   searchtTerm={searchtTerm} />
+           </Route>
 			</div>
-        <Route path='/description/:'  render={(props)=><Description movies={movies} {...props}  />}  />  
+        <Route  exact path='/description/:id' render={(props)=><Description movies={movies} {...props}  />}  />  
          
 		</div>
 	);
